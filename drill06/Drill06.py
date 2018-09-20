@@ -2,8 +2,7 @@ from pico2d import *
 
 KPU_WIDTH, KPU_HEIGHT = 1280, 1024
 
-
-def handle_events():
+def handle_events() :
     global running
     global x,y
     global Cx, Cy
