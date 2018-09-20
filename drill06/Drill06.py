@@ -9,6 +9,7 @@ def handle_events():
     global Cx, Cy
     global Mx, My
     global Gx, Gy
+    global head
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
@@ -20,6 +21,10 @@ def handle_events():
         elif event.type == SDL_MOUSEBUTTONDOWN:
             Cx,Cy = event.x - 25, KPU_HEIGHT - 1 - event.y + 26
             Gx, Gy = Cx - Mx, Cy - My
+            if(Gx < 0):
+                head = 1
+            else:
+                head = 0
 
 
 
@@ -37,6 +42,7 @@ Mx = 0
 My = 0
 Gx = 0
 Gy = 0
+head = 0
 frame = 0
 hide_cursor()
 
@@ -48,6 +54,9 @@ while running:
         if (Mx > Cx):
             Mx = Mx + Gx / 10
             My = My + Gy / 10
+            if(Mx < Cx):
+                Mx = Cx
+                My = Cy
         else:
             Mx = Cx
             My = Cy
@@ -55,11 +64,16 @@ while running:
         if(Mx < Cx):
             Mx = Mx + Gx / 10
             My = My + Gy / 10
+            if (Mx > Cx):
+                Mx = Cx
+                My = Cy
         else:
             Mx = Cx
             My = Cy
-
-    character.clip_draw(frame * 100, 100 * 1, 100, 100, Mx, My)
+    if head == 0:
+        character.clip_draw(frame * 100, 100 * 1, 100, 100, Mx, My)
+    else:
+        character.clip_draw(frame * 100, 100 * 0, 100, 100, Mx, My)
     update_canvas()
     frame = (frame + 1) % 8
 
