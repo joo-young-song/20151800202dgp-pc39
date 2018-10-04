@@ -98,6 +98,10 @@ def draw_curve_4_points(p1, p2, p3, p4):
     draw_point(p4)
 
 def draw_infinity_4_points(p1, p2, p3, p4):
+    draw_big_point(p1)
+    draw_big_point(p2)
+    draw_big_point(p3)
+    draw_big_point(p4)
     for i in range(0, 100, 2):
         t = i / 100
         x = ((-t**3 + 2*t**2 - t)*p1[0] + (3*t**3 - 5*t**2 + 2)*p2[0] + (-3*t**3 + 4*t**2 + t)*p3[0] + (t**3 - t**2)*p4[0])/2
@@ -110,15 +114,28 @@ def draw_infinity_4_points(p1, p2, p3, p4):
 
 
 prepare_turtle_canvas()
-points = [(-300,200),(400,350),(300,-300),(-200,-200)]
+points = [(-200,-200),(-300,200),(400,350),(300,-300)]
 
 size = len(points)
-n = 1
+n1 = 0
+n2 = 1
+n3 = 2
+n4 = 3
 
 while True:
-    draw_infinity_4_points(points[n-2], points[n-1],points[n],points[n+1])
-    n = (n + 1) % size
-
+    draw_infinity_4_points(points[n1], points[n2],points[n3],points[n4])
+    n1 = n1 + 1
+    if(n1 > 3):
+        n1 = 0
+    n2 = n2 + 1
+    if (n2 > 3):
+        n2 = 0
+    n3 = n3 + 1
+    if (n3 > 3):
+        n3 = 0
+    n4 = n4 + 1
+    if (n4 > 3):
+        n4 = 0
 
 
 
