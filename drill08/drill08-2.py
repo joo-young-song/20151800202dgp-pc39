@@ -16,7 +16,10 @@ def draw_infinity_4_points(p1, p2, p3, p4):
 
         clear_canvas()
         BASE.draw(640, 512)
-        character.clip_draw(frame * 100, 0, 100, 100, x, y)
+        if(p2[0] < p3[0]):
+            character.clip_draw(frame * 100, 100, 100, 100, x, y)
+        else :
+            character.clip_draw(frame * 100, 0, 100, 100, x, y)
         update_canvas()
         frame = (frame + 1) % 8
         delay(0.05)
@@ -33,3 +36,20 @@ n4 = 3
 
 while True:
     draw_infinity_4_points(points[n1], points[n2],points[n3],points[n4])
+
+    n1 = n1 + 1
+    if (n1 > 9):
+        n1 = 0
+
+    n2 = n2 + 1
+    if (n2 > 9):
+        n2 = 0
+
+    n3 = n3 + 1
+    if (n3 > 9):
+        n3 = 0
+
+    n4 = n4 + 1
+    if (n4 > 9):
+        n4 = 0
+
