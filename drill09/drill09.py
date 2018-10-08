@@ -82,6 +82,9 @@ while running :
     for ball in small_ball:
         ball.update()
 
+    for otherball in big_ball:
+        otherball.update()
+
     clear_canvas()
     grass.draw()
     
@@ -91,6 +94,8 @@ while running :
     for ball in small_ball:
         ball.draw()
 
+    for otherball in big_ball:
+        otherball.draw()
     update_canvas()
 
     delay(0.05)
