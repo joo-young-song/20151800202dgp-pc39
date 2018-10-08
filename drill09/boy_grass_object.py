@@ -50,7 +50,7 @@ while running :
 
     clear_canvas()
     grass.draw()
-    
+
     for boy in team:
         boy.draw()
 
